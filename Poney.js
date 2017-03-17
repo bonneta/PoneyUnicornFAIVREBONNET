@@ -10,11 +10,12 @@ class Poney {
     this.levelEnergy = 0;
     this.isUnicorn = false;
     this.deadpool = new Deadpool();
+    this.deadpool.teamPoney.push(this);
 
     setInterval(() => {
       this.levelEnergy += tickEnergy;
       if (this.levelEnergy >= 100) {
-        this.deadpool.transformToUnicorn()
+        this.deadpool.transformToUnicorn(this)
           .then(() => this.isUnicorn = true)
           .catch(() => console.log('Failed'))
           .finally(() => this.levelEnergy = 0);
