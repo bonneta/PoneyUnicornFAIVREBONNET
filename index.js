@@ -3,13 +3,6 @@
  */
 
 let deadpool = new Deadpool ();
+let spiderMan = new SpiderMan ();
 let fluttershy = new Poney ();
 let twilightSparkles = new Poney ();
-
-
-setInterval(() => {
-  setInterval(() => {
-
-
-  }, 50000);
-}, 100000);

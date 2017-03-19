@@ -10,16 +10,25 @@ class Poney {
     this.levelEnergy = 0;
     this.isUnicorn = false;
     this.deadpool = new Deadpool();
+    this.spiderMan = new SpiderMan ();
     this.deadpool.teamPoney.push(this);
 
     setInterval(() => {
       this.levelEnergy += tickEnergy;
       if (this.levelEnergy >= 100) {
         this.deadpool.transformToUnicorn(this)
-          .then(() => this.isUnicorn = true)
+          .then(() => this.turnToUnicorn())
           .catch(() => console.log('Failed'))
-          .finally(() => this.levelEnergy = 0);
       }
+    }, 1000);
+  }
+
+  turnToUnicorn() {
+      setTimeout(() => {
+       if (Math.random()*this.levelEnergy >=0.5){
+         this.isUnicorn = true;
+       }
+       this.levelEnergy = 0;
     }, 1000);
   }
 

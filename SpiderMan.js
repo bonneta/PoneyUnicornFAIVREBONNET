@@ -1,10 +1,13 @@
 /**
  * Created by ab on 3/17/17.
  */
-class SpiderMan {
+class SpiderMan{
 
+  constructor(){
+    this.deadpool = new Deadpool();
 
-    constructor () {
-        let
-            }
+  }
+
 }
+
+module.exports = {SpiderMan};
