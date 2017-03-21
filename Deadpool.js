@@ -1,6 +1,8 @@
 /**
  * Created by ab on 3/17/17.
  */
+const {Poney}= require('./Poney');
+const {SpiderMan} = require('./SpiderMan');
 
 class Deadpool {
 

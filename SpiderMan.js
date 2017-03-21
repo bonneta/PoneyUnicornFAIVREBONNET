@@ -1,13 +1,15 @@
 /**
  * Created by ab on 3/17/17.
  */
-class SpiderMan{
+const {Poney}= require('./Poney');
+const {Deadpool}= require('./Deadpool');
 
-  constructor(){
-    this.deadpool = new Deadpool();
+class SpiderMan {
+
+  constructor() {
+    this.nb = Math.random();
 
   }
-
 }
 
 module.exports = {SpiderMan};

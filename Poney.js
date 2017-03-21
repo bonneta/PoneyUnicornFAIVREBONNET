@@ -1,6 +1,8 @@
 /**
  * Created by ab on 3/17/17.
  */
+const {Deadpool}= require('./Deadpool');
+const {SpiderMan} = require('./SpiderMan');
 
 class Poney {
 
@@ -14,7 +16,7 @@ class Poney {
     this.deadpool.teamPoney.push(this);
 
     setInterval(() => {
-      this.levelEnergy += tickEnergy;
+      this.levelEnergy += this.tickEnergy;
       if (this.levelEnergy >= 100) {
         this.deadpool.transformToUnicorn(this)
           .then(() => this.turnToUnicorn())
@@ -25,7 +27,7 @@ class Poney {
 
   turnToUnicorn() {
       setTimeout(() => {
-       if (Math.random()*this.levelEnergy >=0.5){
+       if (Math.random()*this.levelEnergy >=50){
          this.isUnicorn = true;
        }
        this.levelEnergy = 0;
