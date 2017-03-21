@@ -15,8 +15,6 @@ class Deadpool {
 
     setInterval(() => {
       this.nbUnicorn = this.teamPoney.length;
-      console.log(`${Math.floor(Math.random() * this.nbUnicorn)}`)
-      console.log (`${this.nbUnicorn}`);
       if (this.nbUnicorn >= 1) {
         this.feedingOnUnicorn(Math.floor(Math.random() * this.nbUnicorn));
       }
@@ -39,11 +37,10 @@ class Deadpool {
 
   feedingOnUnicorn(i) {
     setInterval(() => {
-      console.log ("Poney "+`${i}`+" : ");
       if (this.teamPoney[i].isUnicorn) {
         this.teamPoney[i].feedingDeadpool()
           .then(() => this.levelEnergy += 5)
-          .catch(() => console.log('Failed'))
+          .catch(() => console.log('Failed feeding'))
       }
     }, 500);
   }

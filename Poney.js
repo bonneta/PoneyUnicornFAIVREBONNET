@@ -21,20 +21,15 @@ class Poney {
       if (this.levelEnergy >= 100 && !this.isUnicorn) {
         this.deadpool.transformToUnicorn()
           .then(() => this.turnToUnicorn())
-          .catch(() => console.log('Failed'))
+          .catch(() => console.log('Failed Deadpool transformation'))
       }
     }, 500);
   }
 
   turnToUnicorn() {
       setTimeout(() => {
-        console.log('Deadpool accepted');
        if (Math.random()*this.levelEnergy >=50){
          this.isUnicorn = true;
-         console.log('You are a Unicorn !');
-       }
-       else {
-         console.log('You are a not Unicorn !');
        }
        this.levelEnergy = 0;
     }, 500);
