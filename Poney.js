@@ -3,35 +3,41 @@
  */
 const {Deadpool}= require('./Deadpool');
 const {SpiderMan} = require('./SpiderMan');
+const {DayOrNight} = require('./DayOrNight');
 
 class Poney {
 
 
-  constructor() {
-    this.tickEnergy = 1;
+  constructor(deadpool) {
+    this.tickEnergy = 10;
     this.levelEnergy = 0;
     this.isUnicorn = false;
-    this.deadpool = new Deadpool();
+    this.deadpool = deadpool;
     this.spiderMan = new SpiderMan ();
     this.deadpool.teamPoney.push(this);
 
     setInterval(() => {
       this.levelEnergy += this.tickEnergy;
-      if (this.levelEnergy >= 100) {
-        this.deadpool.transformToUnicorn(this)
+      if (this.levelEnergy >= 100 && !this.isUnicorn) {
+        this.deadpool.transformToUnicorn()
           .then(() => this.turnToUnicorn())
           .catch(() => console.log('Failed'))
       }
-    }, 1000);
+    }, 500);
   }
 
   turnToUnicorn() {
       setTimeout(() => {
+        console.log('Deadpool accepted');
        if (Math.random()*this.levelEnergy >=50){
          this.isUnicorn = true;
+         console.log('You are a Unicorn !');
+       }
+       else {
+         console.log('You are a not Unicorn !');
        }
        this.levelEnergy = 0;
-    }, 1000);
+    }, 500);
   }
 
   feedingDeadpool() {
@@ -45,7 +51,7 @@ class Poney {
           reject();
         }
       });
-    }, 1000);
+    }, 500);
   }
 
 }

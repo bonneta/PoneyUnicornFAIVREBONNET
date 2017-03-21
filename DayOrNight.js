@@ -2,7 +2,8 @@
  * Created by ab on 3/21/17.
  */
 
-const EventDayOrNight = require('events').EventDayOrNight;
+const EventDayOrNight = require('events');
+
 class DayOrNight {
 
 
@@ -30,4 +31,4 @@ class DayOrNight {
 }
 
 
-module.exports = {GereJourNuit};
+module.exports = {DayOrNight};
