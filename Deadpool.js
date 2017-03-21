@@ -9,7 +9,7 @@ class Deadpool {
     this.spiderMan = new SpiderMan();
     this.teamPoney = [];
     this.nbUnicorn = this.teamPoney.length;
-
+    this.you =0;
   }
 
   transformToUnicorn() {
