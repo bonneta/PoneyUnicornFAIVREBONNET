@@ -7,13 +7,16 @@ const {Deadpool}= require('./Deadpool');
 const {SpiderMan} = require('./SpiderMan');
 const {DayOrNight} = require('./DayOrNight');
 
+console.log('Let the life start !');
+
+let dayOrNight = new DayOrNight();
 let deadpool = new Deadpool ();
 let spiderMan = new SpiderMan ();
-let spiderMan1 = new SpiderMan ();
-let fluttershy = new Poney (deadpool);
-let twilightSparkles = new Poney (deadpool);
+let fluttershy = new Poney ();
+let twilightSparkles = new Poney ();
+let pinkiePie = new Poney ();
+let appleJack = new Poney ();
+let ponyPony = new Poney ();
+let ponyta = new Poney ();
+let poissonRouge = new Poney ();
 
-
-
-console.log (`${spiderMan.nb}`);
-console.log (`${spiderMan1.nb}`);

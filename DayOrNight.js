@@ -4,18 +4,20 @@
 
 const EventDayOrNight = require('events');
 
+let instance = null;
 class DayOrNight {
 
-
   constructor() {
+    if (!instance) {
+      instance = this;
+      this.isDay = true;
+      this.eventDayOrNight = new EventDayOrNight();
+      this.interGereCycle = setInterval(() => {
+        this.launchDayOrNight();
+      }, 10000);
 
-    this.isDay = true;
-    this.eventDayOrNight = new EventDayOrNight();
-    this.InterGereCycle = setInterval(() => {
-      launchDayOrNight();
-    }, 10000);
-
-
+    }
+    return instance;
   }
 
   launchDayOrNight(){

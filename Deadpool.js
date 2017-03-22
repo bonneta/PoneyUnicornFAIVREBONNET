@@ -4,35 +4,72 @@
 const {Poney}= require('./Poney');
 const {SpiderMan} = require('./SpiderMan');
 const {DayOrNight} = require('./DayOrNight');
+let instance  = null;
 
 class Deadpool {
 
   constructor() {
-    this.levelEnergy = 0;
-    this.spiderMan = new SpiderMan();
-    this.teamPoney = [];
-    this.nbUnicorn = this.teamPoney.length;
+    if (!instance) {
+      instance = this;
+      this.levelEnergy = 0;
+      this.helpGranted = 1;
+      this.teamPoney = [];
+      this.nbPoney = 0;
+      this.nbUnicorn = 0;
+      this.dayOrNight = new DayOrNight();
 
-    setInterval(() => {
-      this.nbUnicorn = this.teamPoney.length;
-      if (this.nbUnicorn >= 1) {
-        this.feedingOnUnicorn(Math.floor(Math.random() * this.nbUnicorn));
-      }
-    }, 1500);
+      this.dayOrNight.eventDayOrNight.on('Day',function(){
+        this.helpGranted = 1;
+      });
 
+      this.dayOrNight.eventDayOrNight.on('Night',function(){
+        this.helpGranted = 2;
+      });
+
+      setInterval(() => {
+        this.nbPoney = this.teamPoney.length;
+        if (this.nbPoney >= 1) {
+          this.feedingOnUnicorn(Math.floor(Math.random() * this.nbPoney));
+        }
+      }, 1500);
+
+    }
+    return instance;
   }
+
+  nbUnicornCount (){
+    return new Promise((resolve, reject) => {
+      this.a = 0;
+      this.nbPoney = this.teamPoney.length;
+      for (let i = 0; i < this.nbPoney; i++) {
+        if (this.teamPoney[i].isUnicorn) {
+          this.a++;
+        }
+      }
+      this.nbUnicorn = this.a;
+      resolve();
+    })
+  };
 
   transformToUnicorn() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.nbUnicorn = this.teamPoney.length;
-        if (Math.random()*this.nbUnicorn > 0.5) {
+        this.nbUnicornCount()
+          .then(() => this.transformToUnicorn2() )
+          .then (() => resolve() )
+          .catch(() => reject() )
+      });
+    }, 500);
+  }
+
+  transformToUnicorn2() {
+    return new Promise((resolve, reject) => {
+        if (Math.random() > 0.1*this.nbUnicorn ) {
           resolve();
         } else {
           reject();
         }
       });
-    }, 500);
   }
 
   feedingOnUnicorn(i) {
@@ -40,9 +77,10 @@ class Deadpool {
       if (this.teamPoney[i].isUnicorn) {
         this.teamPoney[i].feedingDeadpool()
           .then(() => this.levelEnergy += 5)
-          .catch(() => console.log('Failed feeding'))
+          .then(() => console.log('Deadpool is feeding'))
+          .catch(() => console.log('Deadpool coud not feed'))
       }
-    }, 500);
+    }, 500*this.helpGranted);
   }
 
 }
