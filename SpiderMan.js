@@ -4,6 +4,7 @@
 const {Poney}= require('./Poney');
 const {Deadpool}= require('./Deadpool');
 const {DayOrNight} = require('./DayOrNight');
+const {colors} = require('colors');
 
 let instance  = null;
 
@@ -25,8 +26,8 @@ class SpiderMan {
   ridingUnicornOrPoney () {
     let i = Math.floor(Math.random() * this.teamPoney.length);
     this.teamPoney[i].beingRide()
-      .then(() => console.log('SpiderMan is happy'))
-      .catch(() => console.log('SpiderMan is sad'))
+      .then(() => console.log('SpiderMan is happy because he just had some fun with a poney/unicorn'.cyan))
+      .catch(() => console.log('SpiderMan is sad because the poney/unicorn turned him down'.blue))
     }
 
 }

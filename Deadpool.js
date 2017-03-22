@@ -4,6 +4,8 @@
 const {Poney}= require('./Poney');
 const {SpiderMan} = require('./SpiderMan');
 const {DayOrNight} = require('./DayOrNight');
+const {colors} = require('colors');
+
 let instance  = null;
 
 class Deadpool {
@@ -19,11 +21,11 @@ class Deadpool {
       this.dayOrNight = new DayOrNight();
 
       this.dayOrNight.eventDayOrNight.on('Day',function(){
-        this.helpGranted = 1;
+        this.helpGranted = 2;
       });
 
       this.dayOrNight.eventDayOrNight.on('Night',function(){
-        this.helpGranted = 2;
+        this.helpGranted = 1;
       });
 
       setInterval(() => {
@@ -32,6 +34,13 @@ class Deadpool {
           this.feedingOnUnicorn(Math.floor(Math.random() * this.nbPoney));
         }
       }, 1500);
+
+      setInterval(() => {
+        if (this.levelEnergy>=15) {
+          console.log('Deadpool is fighting to save the world (or to have some fun)'.america);
+          this.levelEnergy -= 15;
+        }
+      }, 1000*this.helpGranted);
 
     }
     return instance;
@@ -77,8 +86,8 @@ class Deadpool {
       if (this.teamPoney[i].isUnicorn) {
         this.teamPoney[i].feedingDeadpool()
           .then(() => this.levelEnergy += 5)
-          .then(() => console.log('Deadpool is feeding'))
-          .catch(() => console.log('Deadpool coud not feed'))
+          .then(() => console.log('Deadpool is feeding'.red))
+          .catch(() => console.log('Deadpool coud not feed'.red))
       }
     }, 500*this.helpGranted);
   }

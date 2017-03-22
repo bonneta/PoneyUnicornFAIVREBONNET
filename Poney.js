@@ -4,6 +4,7 @@
 const {Deadpool}= require('./Deadpool');
 const {SpiderMan} = require('./SpiderMan');
 const {DayOrNight} = require('./DayOrNight');
+const {colors} = require('colors');
 
 class Poney {
 
@@ -31,7 +32,7 @@ class Poney {
       if (this.levelEnergy >= 100 && !this.isUnicorn) {
         this.deadpool.transformToUnicorn()
           .then(() => this.turnToUnicorn())
-          .catch(() => console.log('Deadpool did not want to turn your poney to a unicorn'))
+          .catch(() => console.log('Deadpool did not want to turn your poney to a unicorn'.blue))
       }
     }, 500);
   }
@@ -42,7 +43,7 @@ class Poney {
       setTimeout(() => {
        if (Math.random()*this.levelEnergy >=50){
          this.isUnicorn = true;
-         console.log('%c One of your poney just turned to a unicorn','color: blue');
+         console.log('One of your poney just turned to a unicorn'.rainbow);
        }
        this.levelEnergy = 0;
     }, 500);
@@ -51,7 +52,7 @@ class Poney {
   turnToPoney() {
     setTimeout(() => {
       this.isUnicorn = false;
-      console.log("One of your unicorn just turned to a poney");
+      console.log('One of your unicorn just turned to a poney'.zebra);
       this.levelEnergy = 0;
     }, 500);
   }

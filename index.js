@@ -6,8 +6,11 @@ const {Poney}= require('./Poney');
 const {Deadpool}= require('./Deadpool');
 const {SpiderMan} = require('./SpiderMan');
 const {DayOrNight} = require('./DayOrNight');
+const {colors} = require('colors');
+//var colors = require('colors');
 
-console.log('Let the life start !');
+
+console.log('Let the life start !'.bold);
 
 let dayOrNight = new DayOrNight();
 let deadpool = new Deadpool ();
