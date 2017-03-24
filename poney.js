@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-restricted-modules
-require('colors');
+const chalk = require('chalk');
 const {Deadpool} = require('./deadpool');
 const {SpiderMan} = require('./spiderman');
 
@@ -27,8 +26,8 @@ class Poney {
         this.deadpool.transformToUnicorn()
           .then(() => this.turnToUnicorn())
           .catch(() => {
-            console.log(('Deadpool did not want to ' +
-            'turn your poney to a unicorn').blue);
+            console.log(chalk.yellow('Deadpool did not want to ' +
+              'turn your poney to a unicorn'));
           });
       }
     }, 500);
@@ -38,7 +37,8 @@ class Poney {
     setTimeout(() => {
       if (Math.random() * this.levelEnergy >= 50) {
         this.isUnicorn = true;
-        console.log('One of your poney just turned to a unicorn'.rainbow);
+        console.log(
+          chalk.magenta('One of your poney just turned to a unicorn'));
       }
       this.levelEnergy = 0;
     }, 500);
@@ -47,7 +47,7 @@ class Poney {
   turnToPoney() {
     setTimeout(() => {
       this.isUnicorn = false;
-      console.log('One of your unicorn just turned to a poney'.zebra);
+      console.log(chalk.cyan('One of your unicorn just turned to a poney'));
       this.levelEnergy = 0;
     }, 500);
   }

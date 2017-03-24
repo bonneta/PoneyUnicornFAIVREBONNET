@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-restricted-modules
-require('colors');
+const chalk = require('chalk');
 
 let instance = null;
 
@@ -31,8 +30,8 @@ class Deadpool {
 
       setInterval(() => {
         if (this.levelEnergy >= 15) {
-          console.log(('Deadpool is fighting to ' +
-          'save the world (or to have some fun)').america);
+          console.log(chalk.bold.magenta.underline(('Deadpool is fighting to ' +
+          'save the world (or to have some fun)')));
           this.levelEnergy -= 15;
         }
       }, 1000 * this.helpGranted);
@@ -82,8 +81,8 @@ class Deadpool {
           .then(() => {
             this.levelEnergy += 5;
           })
-          .then(() => console.log('Deadpool is feeding'.red))
-          .catch(() => console.log('Deadpool coud not feed'.red));
+          .then(() => console.log(chalk.red('Deadpool is feeding')))
+          .catch(() => console.log(chalk.red('Deadpool coud not feed')));
       }
     }, 500 * this.helpGranted);
   }

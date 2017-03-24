@@ -1,9 +1,8 @@
-// eslint-disable-next-line no-restricted-modules import/no-unassigned-import
-require('colors');
+const chalk = require('chalk');
 const {Poney} = require('./poney');
 const {DayOrNight, cycleEvents} = require('./day-or-night');
 
-console.log('Let the life start !'.bold);
+console.log(chalk.bold('Let the life start !'));
 
 const day = new DayOrNight();
 
