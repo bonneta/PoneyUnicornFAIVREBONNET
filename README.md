@@ -15,8 +15,7 @@ Using : Node.js Core library is enable
 
 ```sh
 npm install
-npm install colors
-index.js
+npm start
 ```
 
 #### Let the fun start !!!
