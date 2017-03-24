@@ -29,11 +29,10 @@ class Poney {
           .catch(() => {
             console.log(('Deadpool did not want to ' +
             'turn your poney to a unicorn').blue);
-          })
+          });
       }
     }, 500);
   }
-
 
   turnToUnicorn() {
     setTimeout(() => {
@@ -72,15 +71,11 @@ class Poney {
         if (this.isUnicorn) {
           this.turnToPoney();
           resolve();
-        }
-        else {
-          if (this.levelEnergy >= 40) {
-            this.levelEnergy = 30;
-            resolve();
-          }
-          else {
-            reject();
-          }
+        } else if (this.levelEnergy >= 40) {
+          this.levelEnergy = 30;
+          resolve();
+        } else {
+          reject();
         }
       });
     }, 500);

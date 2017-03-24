@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-restricted-modules
 require('colors');
-const {Poney} = require('./poney');
 
 let instance = null;
 
@@ -32,18 +31,17 @@ class Deadpool {
 
       setInterval(() => {
         if (this.levelEnergy >= 15) {
-          console.log(
-            'Deadpool is fighting to save the world (or to have some fun)'.america);
+          console.log(('Deadpool is fighting to ' +
+          'save the world (or to have some fun)').america);
           this.levelEnergy -= 15;
         }
       }, 1000 * this.helpGranted);
-
     }
     return instance;
   }
 
   nbUnicornCount() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       this.a = 0;
       this.nbPoney = this.teamPoney.length;
       for (let i = 0; i < this.nbPoney; i++) {
@@ -53,7 +51,7 @@ class Deadpool {
       }
       this.nbUnicorn = this.a;
       resolve();
-    })
+    });
   }
 
   transformToUnicorn() {
@@ -81,7 +79,9 @@ class Deadpool {
     setInterval(() => {
       if (this.teamPoney[i].isUnicorn) {
         this.teamPoney[i].feedingDeadpool()
-          .then(() => this.levelEnergy += 5)
+          .then(() => {
+            this.levelEnergy += 5;
+          })
           .then(() => console.log('Deadpool is feeding'.red))
           .catch(() => console.log('Deadpool coud not feed'.red));
       }
