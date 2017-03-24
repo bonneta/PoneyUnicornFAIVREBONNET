@@ -1,7 +1,3 @@
-/**
- * Created by ab on 3/21/17.
- */
-
 const {EventEmitter} = require('events');
 
 const cycleEvents = new EventEmitter();

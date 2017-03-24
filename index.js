@@ -1,25 +1,26 @@
-/**
- * Created by ab on 3/17/17.
- */
-
-const {Poney}= require('./poney');
-const {Deadpool}= require('./Deadpool');
-const {SpiderMan} = require('./SpiderMan');
+// eslint-disable-next-line no-restricted-modules
+require('colors');
+const {Poney} = require('./poney');
+const {Deadpool} = require('./deadpool');
+const {SpiderMan} = require('./spiderman');
 const {DayOrNight, cycleEvents} = require('./day-or-night');
-const {colors} = require('colors');
-//var colors = require('colors');
 
 
 console.log('Let the life start !'.bold);
 
-let dayOrNight = new DayOrNight();
-let deadpool = new Deadpool();
-let spiderMan = new SpiderMan();
-let fluttershy = new Poney(cycleEvents);
-let twilightSparkles = new Poney(cycleEvents);
-let pinkiePie = new Poney(cycleEvents);
-let appleJack = new Poney(cycleEvents);
-let ponyPony = new Poney(cycleEvents);
-let ponyta = new Poney(cycleEvents);
-let poissonRouge = new Poney(cycleEvents);
+// let deadpool = new Deadpool(cycleEvents);
+// let spiderMan = new SpiderMan();
+const poneyList = [];
+
+for (let i = 0; i < 10; i++) {
+  poneyList.push(new Poney(cycleEvents));
+}
+
+// let fluttershy = new Poney(cycleEvents);
+// let twilightSparkles = new Poney(cycleEvents);
+// let pinkiePie = new Poney(cycleEvents);
+// let appleJack = new Poney(cycleEvents);
+// let ponyPony = new Poney(cycleEvents);
+// let ponyta = new Poney(cycleEvents);
+// let poissonRouge = new Poney(cycleEvents);
 

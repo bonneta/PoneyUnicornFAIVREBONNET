@@ -1,13 +1,14 @@
+// eslint-disable-next-line no-restricted-modules
 require('colors');
-const {Deadpool} = require('./Deadpool');
-const {SpiderMan} = require('./SpiderMan');
+const {Deadpool} = require('./deadpool');
+const {SpiderMan} = require('./spiderman');
 
 class Poney {
   constructor(ev) {
     this.tickEnergy = 10;
     this.levelEnergy = 0;
     this.isUnicorn = false;
-    this.deadpool = new Deadpool();
+    this.deadpool = new Deadpool(ev);
     this.spiderMan = new SpiderMan();
     this.deadpool.teamPoney.push(this);
     this.spiderMan.teamPoney.push(this);
