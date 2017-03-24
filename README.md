@@ -4,9 +4,15 @@ ESME Sudria 2016-2017
 
 Clone from : https://github.com/bonneta/PoneyUnicornFAIVREBONNET (public repository)
 
-Using : Node.js Core library is enable
+
+#### Configuring you IDE
+Using : Node.js Core library is enable  
         JavaScript language version ECMAScript 6
 
+#### Starting
 
-Run :   npm install color
-        index.js
+```sh
+npm install
+npm install colors
+index.js
+```

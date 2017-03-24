@@ -1,30 +1,23 @@
-/**
- * Created by ab on 3/17/17.
- */
-const {Deadpool}= require('./Deadpool');
+require('colors');
+const {Deadpool} = require('./Deadpool');
 const {SpiderMan} = require('./SpiderMan');
-const {DayOrNight} = require('./DayOrNight');
-const {colors} = require('colors');
 
 class Poney {
-
-
-  constructor() {
+  constructor(ev) {
     this.tickEnergy = 10;
     this.levelEnergy = 0;
     this.isUnicorn = false;
     this.deadpool = new Deadpool();
     this.spiderMan = new SpiderMan();
-    this.dayOrNight = new DayOrNight();
     this.deadpool.teamPoney.push(this);
     this.spiderMan.teamPoney.push(this);
 
-    this.dayOrNight.eventDayOrNight.on('Day',function(){
-      this.tickEnergy = 10;
-    });
-
-    this.dayOrNight.eventDayOrNight.on('Night',function(){
-      this.tickEnergy = 20;
+    ev.on('cycle change', period => {
+      if (period === 'day') {
+        this.tickEnergy = 10;
+      } else if (period === 'night') {
+        this.tickEnergy = 20;
+      }
     });
 
     setInterval(() => {
@@ -32,20 +25,22 @@ class Poney {
       if (this.levelEnergy >= 100 && !this.isUnicorn) {
         this.deadpool.transformToUnicorn()
           .then(() => this.turnToUnicorn())
-          .catch(() => console.log('Deadpool did not want to turn your poney to a unicorn'.blue))
+          .catch(() => {
+            console.log(('Deadpool did not want to ' +
+            'turn your poney to a unicorn').blue);
+          })
       }
     }, 500);
   }
 
 
-
   turnToUnicorn() {
-      setTimeout(() => {
-       if (Math.random()*this.levelEnergy >=50){
-         this.isUnicorn = true;
-         console.log('One of your poney just turned to a unicorn'.rainbow);
-       }
-       this.levelEnergy = 0;
+    setTimeout(() => {
+      if (Math.random() * this.levelEnergy >= 50) {
+        this.isUnicorn = true;
+        console.log('One of your poney just turned to a unicorn'.rainbow);
+      }
+      this.levelEnergy = 0;
     }, 500);
   }
 
@@ -73,12 +68,12 @@ class Poney {
   beingRide() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (this.isUnicorn){
-          this.turnToPoney;
+        if (this.isUnicorn) {
+          this.turnToPoney();
           resolve();
         }
         else {
-          if (this.levelEnergy >=40){
+          if (this.levelEnergy >= 40) {
             this.levelEnergy = 30;
             resolve();
           }
@@ -87,7 +82,7 @@ class Poney {
           }
         }
       });
-    },500);
+    }, 500);
   }
 
 }

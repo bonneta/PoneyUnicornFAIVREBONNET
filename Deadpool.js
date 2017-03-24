@@ -1,9 +1,9 @@
 /**
  * Created by ab on 3/17/17.
  */
-const {Poney}= require('./Poney');
+const {Poney}= require('./poney');
 const {SpiderMan} = require('./SpiderMan');
-const {DayOrNight} = require('./DayOrNight');
+const {DayOrNight} = require('./day-or-night');
 const {colors} = require('colors');
 
 let instance  = null;

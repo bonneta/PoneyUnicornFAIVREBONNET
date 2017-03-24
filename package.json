@@ -5,14 +5,14 @@
   "repository": "https://github.com/bonneta/PoneyUnicornFAIVREBONNET.git",
   "license": "MIT",
   "xo": {
-    "esnext": true ,
+    "esnext": true,
     "envs": [
       "node",
       "mocha"
     ],
     "space": 2,
     "rules": {
-      "max -len": [
+      "max-len": [
         "error",
         80,
         2
@@ -21,5 +21,8 @@
     "ignores": [
       "Gruntfile.js"
     ]
+  },
+  "dependencies": {
+    "colors": "^1.1.2"
   }
 }
